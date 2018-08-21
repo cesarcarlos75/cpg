@@ -1,0 +1,16 @@
+.activo {
+	width: 300px;
+}
+.subrayado {
+	text-decoration: underline;
+}
+.inclinada {
+	font-style: italic;
+}
+.inc:nth-child(3) {
+	font-style: italic;
+}
+
+.resaltado {
+	text-shadow: 0 0 20px blue;
+}

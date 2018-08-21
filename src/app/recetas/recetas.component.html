@@ -1,0 +1,41 @@
+<div class="row">
+	<form class="col-6">
+		<div class="form-group">
+			<input name="titulo" type="text" class="form-control" placeholder="Titulo" [(ngModel)]="receta.titulo">
+		</div>
+		<div class="form-group">
+			<input name="descripcion" type="text" class="form-control" placeholder="Descripcion" [(ngModel)]="receta.descripcion">
+		</div>
+		<div class="form-group">
+			<input name="url" type="text" class="form-control" placeholder="URL de la Imagen" [(ngModel)]="receta.url">
+		</div>
+		<div class="form-group">
+			<button type="button" class="btn btn-primary" (click)="agregarReceta()" [ngStyle]="{backgroundColor: obtenerColor()}" [ngClass]="{activo: true, subrayado: true, inclinada: false}">Agregar</button>
+		</div>
+	</form>
+	<table class="table col-6" *ngIf="recetas.length>0; else noHayRecetas">
+		<thead>
+			<tr>
+				<th>Nombre de la Receta</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let receta of recetas; let indice = index">
+				<table>
+					<tr (click)="receta.abrir=!receta.abrir">
+						<td [ngStyle]="{backgroundColor: recetaColor(indice)}" [ngClass]="{inclinada: modthree(indice), resaltado: receta.abrir}">{{receta.titulo}}</td>
+					</tr>
+					<tr *ngIf="receta.abrir">
+						<!--<td>{{receta.reducirTexto()}}</td>-->
+						<td>{{receta.descripcion}}</td>
+					</tr>
+				</table>
+
+		</tbody>
+	</table>
+	<ng-template #noHayRecetas>
+		<div class="col-6">
+			No has ingresado ninguna receta.
+		</div>
+	</ng-template>
+</div>
